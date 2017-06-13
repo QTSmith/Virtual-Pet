@@ -5,14 +5,15 @@ public class Virtualpet {
 	public String name;
 	public String breed;
 	int hunger;
-	int thirst;
+	int drySoil
+	;
 	int boredom;
 
 	public Virtualpet(String name, String breed) {
 		this.name = name;
 		this.breed = breed;
 		hunger = 30;
-		thirst = 30;
+		drySoil = 30;
 		boredom = 30;
 
 	}
@@ -21,12 +22,16 @@ public class Virtualpet {
 		name = newName;
 		 breed = newBreed;
 		 hunger = hungerNum;
-		  thirst =thirstNum;
+		  drySoil =thirstNum;
 		  boredom = boredNum;
 
 	}
 
 	Random r = new Random();
+	
+	boolean dead() {
+		return hunger > 60 && drySoil > 60 && boredom > 60;
+	}
 
 	public String getName() {
 		return name;
@@ -47,14 +52,14 @@ public class Virtualpet {
 
 	// thirst
 	public void waterPets() {
-		thirst = thirst - 10; // hunger -=10
+		drySoil = drySoil - 10; // hunger -=10
 	}
 
-	boolean isThirst() {
-		return thirst >= 50;
+	boolean isDry() {
+		return drySoil >= 50;
 	}
 
-	int getThirst() {
+	int getDry() {
 		return hunger;
 
 	}
@@ -71,21 +76,22 @@ public class Virtualpet {
 	int getBored() {
 		return boredom;
 	}
-
+	void quit() {
+		System.exit(0);
+	}
 	// tick here
 	void tick() {
 
 		hunger = hunger + r.nextInt(10);
-		thirst = thirst + r.nextInt(10);
+		drySoil = drySoil + r.nextInt(10);
 		boredom = boredom + r.nextInt(10);
 
 	}
 
 	@Override // turn object into String (toString)
 	public String toString() {
-		return name + " " + breed + " " + hunger + " " + thirst + " " + boredom;
+		return name + " " + breed + " " + hunger + " " + drySoil + " " + boredom;
 	}
 
 	
 	}
-}

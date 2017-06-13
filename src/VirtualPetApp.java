@@ -6,7 +6,7 @@ public class VirtualPetApp {
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
-		Virtualpet venusFly = new Virtualpet();
+		Virtualpet venusFly = new Virtualpet("Aubrey II", "Venus Fly Trap");
 
 		//Short intro
 		writeLine(
@@ -14,18 +14,18 @@ public class VirtualPetApp {
 		
 		
 		
-		while (venusFly.alive) {
-			writeLine("Abrey II");
+		while (!venusFly.dead()) {
+			writeLine("Aubrey II");
 			writeLine("Hunger: " + venusFly.getHunger());
-			writeLine("Water Level: " + venusFly.getDryness());
+			writeLine("Water Level: " + venusFly.getDry());
 			writeLine("Boredom Level: " + venusFly.getBored());
-			writeLine("Health Level: " + venusFly.getSickness());
+//			writeLine("Health Level: " + venusFly.getSickness());
 			writeLine("What do you want to do? ");
 			writeLine("1. Feed Aubrey II");
 			writeLine("2. Water Aubrey II");
 			writeLine("3. Entertain Aubrey II");
-			writeLine("4. Spray for mites");
-			writeLine("5. Quit");
+//			writeLine("4. Spray for mites");
+			writeLine("4. Quit");
 			// show a menu of the things the pet can do
 // loop is not looping!!
 			String options = input.next();
@@ -52,15 +52,15 @@ public class VirtualPetApp {
 				} else {
 					writeLine("Be gone! Your prescence has become a burden");
 				}
+//			case "4":
+//				if (venusFly.isSick()) {
+//					writeLine("I require pesticides, immediatley!");
+//				} else {
+//					writeLine("There ain't no bugs on me");
+//				}
 			case "4":
-				if (venusFly.isSick()) {
-					writeLine("I require pesticides, immediatley!");
-				} else {
-					writeLine("There ain't no bugs on me");
-				}
-			case "5":
 				writeLine("Don't stay away too long! <3 ");
-				venusFly.Exit();
+				venusFly.quit();
 
 				venusFly.tick();
 			}
